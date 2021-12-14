@@ -1,0 +1,48 @@
+<h3>Rute autocar</h3>
+<div *ngFor="let rutaAutocar of ruteAutocar">
+    {{rutaAutocar.id}}
+    {{rutaAutocar.id_oras_pornire}}
+    {{rutaAutocar.id_oras_oprire}}
+    {{rutaAutocar.pret}}
+    {{rutaAutocar.dus_intors}}
+</div>
+
+<form (ngSubmit)="adaugaRutaAutocar()">
+    <div>
+        <label for="id">Id</label>
+        <input type="text" name="id" [(ngModel)]="rutaAutocar.id">
+        <div *ngIf="eroareId">{{eroareId}}</div>
+    </div>
+    <div>
+        <label for="id_oras_pornire">Id oras pornire</label>
+        <input type="text" name="id_oras_pornire" [(ngModel)]="rutaAutocar.id_oras_pornire">
+        <div *ngIf="eroareIdOrasPornire">{{eroareIdOrasPornire}}</div>
+    </div>
+    <div>
+        <label for="id_oras_oprire">Id oras oprire</label>
+        <input type="text" name="id_oras_oprire" [(ngModel)]="rutaAutocar.id_oras_oprire">
+        <div *ngIf="eroareIdOrasOprire">{{eroareIdOrasOprire}}</div>
+    </div>
+    <div>
+        <label for="pret">Pret</label>
+        <input type="number" name="pret" [(ngModel)]="rutaAutocar.pret">
+    </div>
+    <div>
+        <label>Dus Intors</label><br>
+        <input type="radio" name="dus_intors" [value]="true" [ngModel]="rutaAutocar.dus_intors">
+        <label>Da</label><br>
+        <input type="radio" name="dus_intors" [value]="false" [ngModel]="rutaAutocar.dus_intors">
+        <label>Nu</label><br>
+    </div>
+    <button type="submit">Adauga</button>
+</form>
+
+<h4>Rute care se opresc intr-un municipiu </h4>
+<div *ngFor="let x of ruteOpriteInMunicipiu">
+    {{x.ruta.id}}
+    {{x.ruta.id_oras_pornire}}
+    {{x.ruta.id_oras_oprire}}
+    {{x.ruta.pret}}
+    {{x.ruta.dus_intors}}
+    {{x.numeOras}}
+</div>

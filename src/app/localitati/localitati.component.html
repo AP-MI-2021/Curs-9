@@ -1,0 +1,40 @@
+<h4>Localitati</h4>
+<div *ngFor="let localitate of localitati">
+    <app-localitate [localitate]="localitate"></app-localitate>
+</div>
+
+<h4> Adauga localitate</h4>
+<form (ngSubmit)="adaugaLocalitate()">
+    <div>
+        <label for="name">Id</label>
+        <input type="text" name="id" [(ngModel)]="localitate.id">
+        <div *ngIf="eroareId">{{eroareId}}</div>
+    </div>
+    <div>
+        <label for="nume">Nume</label>
+        <input type="text" name="nume" [(ngModel)]="localitate.nume">
+        <div *ngIf="eroareNume">{{eroareNume}}</div>
+    </div>
+    <div>
+        <label for="tip">Tip</label>
+        <select name="tip" #tip="ngModel" [(ngModel)]="localitate.tip">
+            <option>Sat</option>
+            <option>Oras</option>
+            <option>Municipiu</option>
+        </select>
+    </div>
+    <button type="submit">Adauga</button>
+</form>
+
+<h4>Localitati ordonate crescator dupa nr. de rute dus-intors care pornesc din ele </h4>
+<div *ngFor="let x of localitatiNumarRute">
+    {{x.localitate.id}}
+    {{x.localitate.nume}}
+    {{x.localitate.tip}}
+    {{x.numarRute}}
+</div>
+<button (click)="afiseazaLocalitatiOrdonateNuamrRute()">Afiseaza</button>
+
+<h4>JSON</h4>
+{{jsonResult | json}}
+<button (click)="arataJson()">Arata</button>
